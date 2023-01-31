@@ -2,14 +2,15 @@ export interface source {
     id: string;
     name: string;
     description?: string;
-    url: string;
-    category: string;
-    language: string;
-    country: string;
+    url?: string;
+    category?: string;
+    language?: string;
+    country?: string;
 }
+
 export interface sourcesResponseTypes {
     status: string;
-    sources: source
+    sources: source[];
 }
 
 export interface article {
@@ -23,10 +24,10 @@ export interface article {
     content: string;
 }
 
-export interface headlinesResponseTypes {
+export interface newsTypes {
     status: string;
     totalResults: number;
-    articles: article;
+    articles: article[];
     author: string;
     source: source;
     length: number;
