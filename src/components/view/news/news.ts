@@ -1,43 +1,45 @@
 import './news.css';
-import { mainDataTypes } from '../../../types/index';
+import { article } from '../../../types/index';
+
 class News {
-    protected draw(data: mainDataTypes) {
-        const news: string[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    protected draw(data: article[]) {
+        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
-        const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
+        const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 
-        news.forEach((item: string, idx) => {
+        news.forEach((item, idx) => {
             if (newsItemTemp) {
-                const newsClone: HTMLElement | null = <HTMLElement>newsItemTemp.content.cloneNode(true);
+                const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
 
                 if (newsClone) {
                     if (idx % 2) {
-                        const newsCloneItem: HTMLElement | null = newsClone.querySelector('.news__item')
+                        const newsCloneItem = newsClone.querySelector('.news__item') as HTMLElement;
                         newsCloneItem?.classList.add('alt');
                     }
-                    const newsClonePhoto: HTMLElement | null = newsClone.querySelector('.news__meta-photo');
-                    newsClonePhoto!.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'
-                        })`;
-                    newsClone.querySelector('.news__meta-author')!.textContent = `${item.author}` || item.source.name;
-                    newsClone.querySelector('.news__meta-date')!.textContent = item!.publishedAt
+                    const newsClonePhoto = newsClone.querySelector('.news__meta-photo') as HTMLElement;
+                    newsClonePhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+                    (newsClone.querySelector('.news__meta-author') as HTMLElement).textContent =
+                        `${item.author}` || item.source.name;
+                    (newsClone.querySelector('.news__meta-date') as HTMLElement).textContent = item.publishedAt
                         .slice(0, 10)
                         .split('-')
                         .reverse()
                         .join('-');
-
-                    newsClone.querySelector('.news__description-title')!.textContent = item.title;
-                    newsClone.querySelector('.news__description-source')!.textContent = item.source.name;
-                    newsClone.querySelector('.news__description-content')!.textContent = item.description;
-                    newsClone.querySelector('.news__read-more a')!.setAttribute('href', item.url);
+                    (newsClone.querySelector('.news__description-title') as HTMLElement).textContent = item.title;
+                    (newsClone.querySelector('.news__description-source') as HTMLElement).textContent =
+                        item.source.name;
+                    (newsClone.querySelector('.news__description-content') as HTMLElement).textContent =
+                        item.description;
+                    (newsClone.querySelector('.news__read-more a') as HTMLElement).setAttribute('href', item.url);
 
                     fragment.append(newsClone);
                 }
             }
         });
 
-        document.querySelector('.news')!.innerHTML = '';
-        document.querySelector('.news')!.appendChild(fragment);
+        (document.querySelector('.news') as HTMLElement).innerHTML = '';
+        (document.querySelector('.news') as HTMLElement).appendChild(fragment);
     }
 }
 
