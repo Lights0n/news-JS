@@ -1,11 +1,15 @@
-interface source {
+export interface source {
     id: string;
     name: string;
-    description: string;
+    description?: string;
     url: string;
     category: string;
     language: string;
     country: string;
+}
+export interface sourcesResponseTypes {
+    status: string;
+    sources: source
 }
 
 export interface article {
@@ -17,11 +21,6 @@ export interface article {
     urlToImage: string;
     publishedAt: string;
     content: string;
-}
-
-export interface sourcesResponseTypes {
-    status: string;
-    sources: source;
 }
 
 export interface headlinesResponseTypes {
