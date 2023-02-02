@@ -2,8 +2,8 @@ import { fetchResponse } from '../../types/index';
 import { requestOptions } from '../../types/index';
 class Loader {
     baseLink: string;
-    options: string;
-    constructor(baseLink: string, options: string) {
+    options: { apiKey: string };
+    constructor(baseLink: string, options: { apiKey: string }) {
         this.baseLink = baseLink;
         this.options = options;
     }
