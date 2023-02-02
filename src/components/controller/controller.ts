@@ -10,9 +10,9 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: { target: HTMLElement; currentTarget: HTMLElement }, callback: () => void): void {
+    getNews<T>(e: Event, callback: (data?: T) => void): void {
         let target = <HTMLElement>e.target;
-        const newsContainer = e.currentTarget;
+        const newsContainer = e.currentTarget as HTMLElement;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
