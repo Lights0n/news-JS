@@ -18,7 +18,9 @@ class News {
                         newsCloneItem?.classList.add('alt');
                     }
                     const newsClonePhoto = newsClone.querySelector('.news__meta-photo') as HTMLElement;
-                    newsClonePhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+                    newsClonePhoto.style.backgroundImage = `url(${
+                        item.urlToImage || 'https://upload.wikimedia.org/wikipedia/commons/b/b6/No_image_template.svg'
+                    })`;
                     (newsClone.querySelector('.news__meta-author') as HTMLElement).textContent =
                         `${item.author}` || item.source.name;
                     (newsClone.querySelector('.news__meta-date') as HTMLElement).textContent = item.publishedAt
