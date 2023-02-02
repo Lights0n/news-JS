@@ -1,19 +1,16 @@
 import AppLoader from './appLoader';
-
 class AppController extends AppLoader {
-    //! idk what is this
-    getSources(callback: void) {
+    getSource<T>(callback: (data?: T) => void): void {
         super.getResp(
             {
                 endpoint: 'sources',
                 options: {},
             },
             callback
-            // console.log(callback);
         );
     }
 
-    getNews(e: { target: HTMLElement; currentTarget: HTMLElement }, callback: void) {
+    getNews(e: { target: HTMLElement; currentTarget: HTMLElement }, callback: () => void): void {
         let target = <HTMLElement>e.target;
         const newsContainer = e.currentTarget;
 

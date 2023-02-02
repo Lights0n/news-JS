@@ -124,3 +124,4 @@ export interface requestOptions {
     pageSize?: number;
     page?: number;
 }
+export type GetSourcesCallback<T> = (data: T) => void;
