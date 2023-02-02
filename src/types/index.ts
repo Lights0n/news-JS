@@ -35,18 +35,17 @@ export interface NewsTypes {
     length: number;
     publishedAt: string;
 }
+export enum clientErrors {
+    badRequest = 400,
+    unauthorized = 401,
+    notFound = 404,
+    tooManyRequest = 429,
+}
 
-export interface FetchResponse {
-    ok: boolean;
-    redirected: boolean;
-    status: 200 | 400 | 401 | 404 | 429 | 500;
-    code?: string;
-    statusText: string;
-    type: string;
-    url: string;
-    message?: string;
-    res?: string;
-    value?: string;
+export interface FetchResponse extends Response {
+    readonly status: 200 | 400 | 401 | 404 | 429 | 500;
+    readonly code: string;
+    readonly message: string;
 }
 
 export interface RequestOptions {

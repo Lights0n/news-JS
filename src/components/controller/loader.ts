@@ -1,6 +1,7 @@
 import { FetchResponse } from '../../types/index';
 import { RequestOptions } from '../../types/index';
 import { Callback } from '../../types/index';
+import { clientErrors } from '../../types/index';
 class Loader {
     baseLink: string;
     options: { apiKey: string };
@@ -9,7 +10,7 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
+    protected getResp(
         { endpoint, options = {} }: { endpoint: string; options: object | string },
         callback = (): void => {
             console.error('No callback for GET response');
@@ -18,17 +19,17 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res: Response | FetchResponse) {
+    protected errorHandler(res: Response | FetchResponse) {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
-                console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
-            throw Error(res.statusText);
+            if (clientErrors.unauthorized || clientErrors.notFound) {
+                console.log(`Sorry, but there is ${res.status} error: ${res.statusText} `);
+                throw Error(res.statusText);
+            }
         }
-
         return res;
     }
 
-    makeUrl(options: object, endpoint: string) {
+    protected makeUrl(options: object, endpoint: string) {
         const urlOptions = { ...((this.options as unknown) as RequestOptions), ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
