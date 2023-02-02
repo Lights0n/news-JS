@@ -1,51 +1,62 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>NewsPortal</title>
-    </head>
-    <body>
-        <header>
-            <h1>News Portal</h1>
-        </header>
-        <main>
-            <div class="sources buttons"></div>
-            <div class="news"></div>
-        </main>
-        <footer>
-            <p class="copyright">
-                Copyright <a href="https://newsapi.org">NewsAPI</a>
-            </p>
-        </footer>
 
-        <template id="sourceItemTemp">
-            <div class="source__item">
-                <span class="source__item-name"></span>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>NewsPortal</title>
+</head>
+
+<body>
+    <header>
+        <h1>News Portal</h1>
+    </header>
+    <main>
+        <div class="sources buttons"></div>
+        <div class="news"></div>
+    </main>
+    <footer>
+        <a href="https://rs.school/js/" target="_blank">
+            <img src="https://rs.school/images/rs_school_js.svg" height="30" alt="rolling schools icon">
+        </a>
+        <a href="https://rs.school/js/" target="_blank">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMGMtNi42MjYgMC0xMiA1LjM3My0xMiAxMiAwIDUuMzAyIDMuNDM4IDkuOCA4LjIwNyAxMS4zODcuNTk5LjExMS43OTMtLjI2MS43OTMtLjU3N3YtMi4yMzRjLTMuMzM4LjcyNi00LjAzMy0xLjQxNi00LjAzMy0xLjQxNi0uNTQ2LTEuMzg3LTEuMzMzLTEuNzU2LTEuMzMzLTEuNzU2LTEuMDg5LS43NDUuMDgzLS43MjkuMDgzLS43MjkgMS4yMDUuMDg0IDEuODM5IDEuMjM3IDEuODM5IDEuMjM3IDEuMDcgMS44MzQgMi44MDcgMS4zMDQgMy40OTIuOTk3LjEwNy0uNzc1LjQxOC0xLjMwNS43NjItMS42MDQtMi42NjUtLjMwNS01LjQ2Ny0xLjMzNC01LjQ2Ny01LjkzMSAwLTEuMzExLjQ2OS0yLjM4MSAxLjIzNi0zLjIyMS0uMTI0LS4zMDMtLjUzNS0xLjUyNC4xMTctMy4xNzYgMCAwIDEuMDA4LS4zMjIgMy4zMDEgMS4yMy45NTctLjI2NiAxLjk4My0uMzk5IDMuMDAzLS40MDQgMS4wMi4wMDUgMi4wNDcuMTM4IDMuMDA2LjQwNCAyLjI5MS0xLjU1MiAzLjI5Ny0xLjIzIDMuMjk3LTEuMjMuNjUzIDEuNjUzLjI0MiAyLjg3NC4xMTggMy4xNzYuNzcuODQgMS4yMzUgMS45MTEgMS4yMzUgMy4yMjEgMCA0LjYwOS0yLjgwNyA1LjYyNC01LjQ3OSA1LjkyMS40My4zNzIuODIzIDEuMTAyLjgyMyAyLjIyMnYzLjI5M2MwIC4zMTkuMTkyLjY5NC44MDEuNTc2IDQuNzY1LTEuNTg5IDguMTk5LTYuMDg2IDguMTk5LTExLjM4NiAwLTYuNjI3LTUuMzczLTEyLTEyLTEyeiIvPjwvc3ZnPg=="
+                height="30" alt="lights0n github page">
+        </a>
+        <p class="copyright">
+            Copyright <a href="https://newsapi.org">NewsAPI</a>
+        </p>
+
+    </footer>
+
+    <template id="sourceItemTemp">
+        <div class="source__item">
+            <span class="source__item-name"></span>
+        </div>
+    </template>
+
+    <template id="newsItemTemp">
+        <div class="news__item">
+            <div class="news__meta">
+                <div class="news__meta-photo"></div>
+                <ul class="news__meta-details">
+                    <li class="news__meta-author"></li>
+                    <li class="news__meta-date"></li>
+                </ul>
             </div>
-        </template>
-
-        <template id="newsItemTemp">
-            <div class="news__item">
-                <div class="news__meta">
-                    <div class="news__meta-photo"></div>
-                    <ul class="news__meta-details">
-                        <li class="news__meta-author"></li>
-                        <li class="news__meta-date"></li>
-                    </ul>
-                </div>
-                <div class="news__description">
-                    <h2 class="news__description-title"></h2>
-                    <h3 class="news__description-source"></h3>
-                    <p class="news__description-content"></p>
-                    <p class="news__read-more">
-                        <a href="#">Read More</a>
-                    </p>
-                </div>
+            <div class="news__description">
+                <h2 class="news__description-title"></h2>
+                <h3 class="news__description-source"></h3>
+                <p class="news__description-content"></p>
+                <p class="news__read-more">
+                    <a href="#">Read More</a>
+                </p>
             </div>
-        </template>
+        </div>
+    </template>
 
-        <script src="./index.js"></script>
-    </body>
+    <script src="./index.js"></script>
+</body>
+
 </html>
