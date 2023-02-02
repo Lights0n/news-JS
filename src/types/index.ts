@@ -34,12 +34,17 @@ export interface newsTypes {
     publishedAt: string;
 }
 
-export interface errorType {
-    json(): string;
+export interface fetchResponse {
+    ok: boolean;
+    redirected: boolean;
     status: 200 | 400 | 401 | 404 | 429 | 500;
-    code: string;
+    code?: string;
     statusText: string;
-    message: string;
+    type: string;
+    url: string;
+    message?: string;
+    res?: string;
+    value?: string;
 }
 
 export interface urlOptionstypes {
